@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>复选框</title>
+    <script type="text/javascript" src="./jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/test.js"></script>
+</head>
+
+<body>
+    <form method="post" action="">
+        你的爱好是:
+        <br />
+        <input type="checkbox" name="checkbox1" value="看书" />看书
+        <input type="checkbox" name="checkbox1" value="唱歌" />唱歌
+        <input type="checkbox" name="checkbox1" value="跳舞" />跳舞
+        <input type="checkbox" name="checkbox1" value="运动" />运动
+        <br />
+        <input type="button" id="CheckedAll" value="全 选" />
+        <input type="button" id="CheckedNo" value="全不选" />
+        <input type="button" id="CheckedRev" value="反选" />
+        <input type="button" id="send" value="提交" />
+    </form>
+
+</body>
+<script>
+
+    $(document).ready(function () {
+        $("#CheckedAll").click(function () {
+            $("[name=checkbox1]:checkbox").attr("checked", true);
+        })
+        $("#CheckedNo").click(function () {
+            $("[name=checkbox1]:checkbox").attr("checked", false);
+        })
+        $("#CheckedRev").click(function () {
+            $("[name=checkbox1]:checkbox").each(function () {
+                this.checked = !this.checked;
+            })
+        })
+        $("#send").click(function () {
+
+
+            var str = "你的爱好是:\r\n";
+
+
+            $("[name=checkbox1]:checkbox:checked").each(function () {
+
+                str += $(this).val() + "\r\n";
+
+
+            });
+
+
+            alert(str);
+
+
+        });
+    });
+</script>
+
+</html>
